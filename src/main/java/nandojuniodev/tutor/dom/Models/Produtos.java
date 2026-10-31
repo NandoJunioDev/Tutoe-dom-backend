@@ -1,6 +1,7 @@
 package nandojuniodev.tutor.dom.Models;
 
-import java.util.Date;
+import java.time.LocalDateTime;
+
 
 
 import jakarta.persistence.Column;
@@ -23,10 +24,10 @@ public class Produtos {
     
     private String nome;
 
-    private Date dataDeCadastro;
+    private LocalDateTime dataDeCadastro;
 
     @Column(unique = true, nullable = false, name = "codigo_de_barras",length = 14)
 
-    private String CodigoDeBarras;
+    private String codigoDeBarras;
     
 }

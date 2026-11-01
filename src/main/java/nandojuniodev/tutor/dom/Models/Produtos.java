@@ -1,8 +1,7 @@
 package nandojuniodev.tutor.dom.Models;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
-
-
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -28,6 +27,21 @@ public class Produtos {
 
     @Column(unique = true, nullable = false, name = "codigo_de_barras",length = 14)
 
+
     private String codigoDeBarras;
+
+    private String  marcaDoProduto;
+
+    private String grupo;
+
+    private BigDecimal precoAtual;
+
+    private String fotoUrl;
+
+
+
+
+
+    
     
 }

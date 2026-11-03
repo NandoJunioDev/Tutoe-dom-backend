@@ -1,31 +1,42 @@
 package nandojuniodev.tutor.dom.Models;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 
 @Entity 
-public class endereco {
+@Getter 
+@Setter 
+@NoArgsConstructor 
+@Table(name = "endereco")
+public class Endereco {
    
     @Id 
-
-    @GeneratedValue
-     (strategy = GenerationType.IDENTITY)
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long setor_Id;
+    
+    @ManyToOne 
+    @JoinColumn (name = "setor_id",nullable = false)
+    private Setor setor;
 
-    private String rua;
+    private Short rua;
 
-    private String gondola;
+    private Short gondola;
 
-    private String andar;
+    private Short andar;
 
-    private String lado;
+    private Short lado;
 
-    private String posicao;
+    private Short posicao;
 
 
 

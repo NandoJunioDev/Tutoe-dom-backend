@@ -1,4 +1,4 @@
-alter table produtos
+alter table produto
     add column marca_do_produto varchar(100),
 
     add column grupo varchar(100) not null,

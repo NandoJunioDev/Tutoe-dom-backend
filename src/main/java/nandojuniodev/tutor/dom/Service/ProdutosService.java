@@ -8,6 +8,7 @@ import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import nandojuniodev.tutor.dom.dto.ProdutoRequest;
 import nandojuniodev.tutor.dom.dto.ProdutoResponse;
+import nandojuniodev.tutor.dom.exception.CodigoDeBarrasJaCadastradoException;
 import org.springframework.stereotype.Service;
 
 
@@ -57,6 +58,9 @@ public Optional<ProdutoResponse> buscarPorId(Long id) {
     novoProduto.setMarcaDoProduto(produtoRequest.marcaDoProduto());
     novoProduto.setPrecoAtual(produtoRequest.precoAtual());
 
+    if (produtosRepository.existsByCodigoDeBarras(produtoRequest.codigoDeBarras())){
+        throw new CodigoDeBarrasJaCadastradoException("Já existe produto cadastrado com esse codigo de barras "+produtoRequest.codigoDeBarras());
+       }
     Produto produtoSalvo = produtosRepository.save(novoProduto);
 
 

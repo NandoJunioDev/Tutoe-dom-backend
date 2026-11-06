@@ -69,6 +69,17 @@ public Optional<ProdutoResponse> buscarPorId(Long id) {
 
 
     }
+
+    public List <ProdutoResponse > pesquisarPorNome(String nome) {
+
+    List<Produto> produtosEncontrados = produtosRepository.findDistinctByNomeContainingIgnoreCase(nome);
+    List<ProdutoResponse> resposta = new ArrayList<>();
+    for (Produto produto : produtosEncontrados) {
+        resposta.add(ProdutoResponse.from(produto));
+
+    }
+    return resposta;
+    }
 }
 
 

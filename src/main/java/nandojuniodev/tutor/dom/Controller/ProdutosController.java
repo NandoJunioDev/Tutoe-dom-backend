@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import nandojuniodev.tutor.dom.dto.ProdutoRequest;
 import nandojuniodev.tutor.dom.dto.ProdutoResponse;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 
 import org.springframework.web.bind.annotation.*;
@@ -35,6 +36,14 @@ public class ProdutosController {
     public List<ProdutoResponse> listarProdutos() {
         return produtosService.listarTodos();
     }
+
+    @GetMapping("/busca")
+    public List  <ProdutoResponse>pesquisarPorNome( @RequestParam String nome){
+
+        return produtosService.pesquisarPorNome(nome);
+    }
+
+
 
     @PostMapping
     public ResponseEntity<ProdutoResponse> salvarProduto(@RequestBody @Valid ProdutoRequest produtoRequest){
